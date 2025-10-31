@@ -1,0 +1,145 @@
+╔══════════════════════════════════════════════════════════════════════╗
+║                                                                      ║
+║      🚀 AI CAREER PATH RECOMMENDER - QUICK REFERENCE                ║
+║                                                                      ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+📍 PROJECT LOCATION
+└─ c:\Users\jayaprakash.k\OneDrive\Documents\career_path\
+
+┌──────────────────────────────────────────────────────────────────────┐
+│ ⚡ QUICK START                                                        │
+└──────────────────────────────────────────────────────────────────────┘
+
+Terminal 1 - Backend:
+  cd c:\Users\jayaprakash.k\OneDrive\Documents\career_path\ai-career-backend
+  python app.py
+
+Terminal 2 - Frontend:
+  cd c:\Users\jayaprakash.k\OneDrive\Documents\career_path\ai-career-frontend
+  npm run dev
+
+Browser: http://localhost:5173
+
+┌──────────────────────────────────────────────────────────────────────┐
+│ 🌐 ENDPOINTS                                                         │
+└──────────────────────────────────────────────────────────────────────┘
+
+Backend API:     http://127.0.0.1:5000
+Frontend UI:     http://localhost:5173
+
+API Routes:
+  GET  /              → Health check
+  POST /predict       → Get career recommendations
+  POST /register      → Save user info
+  POST /feedback      → Submit feedback
+
+┌──────────────────────────────────────────────────────────────────────┐
+│ 📦 KEY FILES                                                         │
+└──────────────────────────────────────────────────────────────────────┘
+
+Backend:
+  app.py              → Flask REST API
+  model/train_model.py → ML training script
+  data/careers.csv    → Training dataset
+  test_api.py         → API test suite
+
+Frontend:
+  src/App.jsx         → Main app & routing
+  src/components/Form.jsx → Multi-step form
+  src/pages/Results.jsx   → Results page
+
+Documentation:
+  README.md           → Full setup guide
+  PROJECT_SUMMARY.md  → Complete overview
+  .env.example        → Environment template
+
+┌──────────────────────────────────────────────────────────────────────┐
+│ 🧪 TEST PREDICTION                                                   │
+└──────────────────────────────────────────────────────────────────────┘
+
+curl -X POST http://127.0.0.1:5000/predict ^
+  -H "Content-Type: application/json" ^
+  -d "{\"interest_tech\":1,\"interest_design\":0,\"communication\":3,\"creativity\":2,\"logic\":5,\"marks\":85,\"personality\":\"analytical\"}"
+
+Expected: JSON with top 3 career recommendations + confidence scores
+
+┌──────────────────────────────────────────────────────────────────────┐
+│ 🔧 COMMON TASKS                                                      │
+└──────────────────────────────────────────────────────────────────────┘
+
+Retrain Model:
+  cd ai-career-backend
+  python model\train_model.py
+
+Add More Data:
+  Edit: data/careers.csv
+  Then: python model\train_model.py
+
+Build Frontend:
+  cd ai-career-frontend
+  npm run build
+  (output in dist/ folder)
+
+Install New Package (Backend):
+  pip install package_name
+  pip freeze > requirements.txt
+
+Install New Package (Frontend):
+  npm install package-name
+
+┌──────────────────────────────────────────────────────────────────────┐
+│ 🚀 DEPLOYMENT                                                        │
+└──────────────────────────────────────────────────────────────────────┘
+
+Render (Backend):
+  Build:  pip install -r requirements.txt && python model/train_model.py
+  Start:  gunicorn app:app
+  Env:    MONGO_URI (optional)
+
+Render (Frontend):
+  Build:  npm install && npm run build
+  Publish: dist/
+  Env:    REACT_APP_API_URL=https://your-backend.onrender.com
+
+┌──────────────────────────────────────────────────────────────────────┐
+│ 💡 TECH STACK                                                        │
+└──────────────────────────────────────────────────────────────────────┘
+
+Backend:
+  • Flask 3.1          (Web framework)
+  • Scikit-learn 1.7   (Machine learning)
+  • Pandas             (Data processing)
+  • PyMongo            (MongoDB driver)
+
+Frontend:
+  • React 18           (UI library)
+  • Tailwind CSS       (Styling)
+  • Framer Motion      (Animations)
+  • Recharts           (Charts)
+  • Vite 5             (Build tool)
+
+┌──────────────────────────────────────────────────────────────────────┐
+│ ✅ STATUS                                                            │
+└──────────────────────────────────────────────────────────────────────┘
+
+✅ Backend scaffolded
+✅ Frontend scaffolded
+✅ ML model trained (career_model.pkl created)
+✅ Dependencies installed
+✅ Servers configured
+✅ Documentation complete
+✅ Ready for development & deployment!
+
+┌──────────────────────────────────────────────────────────────────────┐
+│ 📚 DOCUMENTATION                                                     │
+└──────────────────────────────────────────────────────────────────────┘
+
+Full Guide:        README.md
+Complete Summary:  PROJECT_SUMMARY.md
+Backend Setup:     ai-career-backend/README.md
+Frontend Setup:    ai-career-frontend/README.md
+
+╔══════════════════════════════════════════════════════════════════════╗
+║  Built with ❤️  |  Flask + React + Scikit-learn + Tailwind         ║
+╚══════════════════════════════════════════════════════════════════════╝
