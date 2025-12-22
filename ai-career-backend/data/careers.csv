@@ -39,3 +39,108 @@ interest_tech,interest_design,interest_business,interest_science,interest_arts,c
 1,0,0,0,0,4,3,4,4,4,3,5,3,3,3,80,analytical,mixed,balance,Mobile Developer
 0,1,0,0,1,4,5,2,3,4,2,2,1,5,4,75,creative,independent,creativity,Animator
 1,0,0,1,0,4,3,5,5,4,3,5,5,4,3,91,analytical,team,growth,Computational Biologist
+1,0,0,1,0,4,2,5,5,3,3,5,5,2,3,90,analytical,independent,growth,AI Engineer
+1,0,0,1,0,3,2,5,5,4,3,5,5,3,2,94,analytical,team,growth,Data Scientist
+1,0,0,0,0,3,3,4,4,4,3,5,3,2,2,83,analytical,team,stability,Software Engineer
+1,0,0,1,0,4,3,5,5,3,4,5,5,3,3,92,analytical,mixed,growth,Machine Learning Engineer
+1,0,0,0,0,3,2,5,5,3,2,5,3,2,2,81,analytical,independent,stability,Cloud Engineer
+1,0,0,0,0,2,2,5,5,2,2,5,4,1,1,79,analytical,independent,stability,Cybersecurity Analyst
+1,0,0,0,0,3,2,4,5,3,2,4,3,2,2,74,analytical,team,stability,Backend Developer
+1,0,0,0,0,4,4,4,4,4,3,5,2,3,3,84,creative,mixed,balance,Frontend Developer
+1,0,1,0,0,4,3,4,4,5,4,4,3,3,4,86,analytical,team,growth,Full Stack Developer
+1,0,0,0,0,3,2,4,4,3,2,4,2,2,2,71,analytical,independent,stability,DevOps Engineer
+1,0,0,1,0,4,3,5,5,4,3,5,5,4,3,89,analytical,mixed,growth,Data Engineer
+1,0,0,0,0,4,3,4,4,4,3,5,3,3,3,82,analytical,mixed,balance,Mobile Developer
+1,0,0,0,0,3,2,4,5,3,2,3,3,2,2,72,analytical,independent,stability,QA Engineer
+1,0,0,0,0,3,2,5,5,2,1,5,3,1,1,78,analytical,independent,stability,Network Engineer
+1,0,0,1,0,3,2,5,5,3,2,5,5,3,2,91,analytical,independent,growth,Research Scientist
+1,0,0,1,0,4,3,5,5,4,4,5,5,4,4,95,analytical,mixed,growth,AI Researcher
+1,0,0,1,0,3,3,5,5,4,3,4,5,3,3,90,analytical,mixed,growth,Quantitative Analyst
+1,0,0,1,0,4,3,5,5,4,3,5,5,4,3,93,analytical,team,growth,Computational Biologist
+1,0,1,0,0,4,3,5,5,4,4,3,5,3,3,88,analytical,team,growth,Blockchain Developer
+1,0,0,0,0,3,3,5,5,3,3,5,3,2,2,85,analytical,independent,stability,Systems Engineer
+1,0,0,1,0,4,3,5,5,4,3,5,5,3,3,91,analytical,mixed,growth,Robotics Engineer
+1,0,0,0,0,3,2,4,5,3,2,4,3,2,2,76,analytical,team,stability,Software Tester
+1,0,0,0,0,4,3,5,5,3,3,5,4,2,2,87,analytical,independent,growth,Game Developer
+1,0,0,1,0,3,3,5,5,3,3,5,5,3,3,92,analytical,mixed,growth,Computer Vision Engineer
+0,1,0,0,1,5,5,2,3,5,3,2,1,5,4,88,creative,team,creativity,UI/UX Designer
+0,1,0,0,1,4,5,2,3,4,2,1,0,4,3,77,creative,mixed,creativity,UI/UX Designer
+0,1,0,0,1,3,5,1,2,3,2,0,0,4,2,74,creative,independent,creativity,Graphic Designer
+0,1,0,0,1,4,5,2,3,4,3,2,1,5,4,79,creative,mixed,creativity,Product Designer
+0,1,0,0,1,5,5,2,3,4,3,1,0,5,5,78,creative,team,creativity,Creative Director
+0,1,0,0,1,4,5,3,4,4,3,3,1,5,4,81,creative,mixed,creativity,Video Editor
+0,1,0,0,1,4,5,2,3,4,2,2,1,5,4,76,creative,independent,creativity,Animator
+0,1,0,0,1,3,5,2,2,2,1,0,0,5,2,70,creative,independent,creativity,Illustrator
+0,1,0,0,1,4,5,2,3,3,2,2,1,5,4,75,creative,independent,creativity,Content Creator
+0,1,1,0,0,4,4,3,4,5,4,2,2,5,5,83,creative,team,creativity,Brand Manager
+0,1,1,0,0,5,4,3,4,5,4,2,3,5,5,85,social,team,growth,Marketing Manager
+0,1,1,0,1,4,5,3,4,4,3,2,2,5,5,82,creative,team,creativity,Social Media Manager
+0,1,0,0,1,4,5,2,3,3,2,1,1,5,4,73,creative,independent,creativity,Motion Graphics Designer
+0,1,0,0,1,5,5,3,4,5,4,2,1,5,5,86,creative,team,creativity,Art Director
+0,1,0,0,1,4,5,2,3,4,2,1,0,4,4,77,creative,mixed,creativity,Fashion Designer
+0,1,0,0,1,3,5,2,3,3,2,1,1,5,3,72,creative,independent,creativity,Interior Designer
+0,1,0,0,1,4,5,3,4,4,3,3,2,4,4,80,creative,mixed,creativity,Game Artist
+0,1,1,0,1,4,4,3,4,4,3,2,2,5,5,81,creative,team,creativity,Content Strategist
+0,0,1,0,0,5,3,3,4,5,4,1,2,4,5,82,social,team,growth,Product Manager
+0,0,1,0,0,5,3,4,4,5,5,1,4,4,5,88,social,team,impact,Business Analyst
+0,0,1,0,0,5,3,4,4,5,5,2,4,5,5,89,social,team,impact,HR Manager
+0,0,1,0,0,5,3,2,3,5,5,0,3,5,5,91,social,team,growth,Technical Recruiter
+0,0,1,0,0,5,3,4,4,5,5,1,4,4,5,87,social,team,growth,Project Manager
+0,0,1,0,0,5,3,3,4,5,4,1,3,4,5,86,social,team,stability,Operations Manager
+1,0,1,0,0,4,3,4,5,4,4,3,4,4,4,85,analytical,team,income,Financial Analyst
+0,0,1,0,0,4,3,4,4,5,4,2,4,4,5,84,social,team,impact,Supply Chain Manager
+0,0,1,0,0,5,4,3,4,5,5,1,3,5,5,88,social,team,growth,Sales Manager
+0,0,1,0,0,5,3,4,4,5,4,2,4,4,5,83,social,team,stability,Account Manager
+0,0,1,0,0,4,3,4,4,5,5,1,3,4,5,85,social,team,growth,Scrum Master
+0,0,1,0,0,5,4,4,4,5,5,2,3,5,5,90,social,team,impact,Talent Acquisition Specialist
+0,0,1,0,0,4,3,3,4,5,4,1,3,4,4,81,social,team,stability,Event Manager
+0,0,1,0,0,5,4,4,4,5,5,2,4,4,5,87,social,team,growth,Management Consultant
+0,0,1,0,0,4,3,4,4,5,4,1,4,4,5,84,social,team,income,Real Estate Agent
+0,0,1,0,0,5,3,3,4,5,5,1,3,5,5,86,social,team,growth,Customer Success Manager
+0,0,1,1,0,4,3,4,4,5,4,2,4,4,4,85,analytical,team,impact,Healthcare Administrator
+0,0,1,0,0,4,3,4,4,5,5,1,3,4,5,83,social,team,stability,Training Coordinator
+0,0,0,1,0,4,3,5,5,4,3,3,4,4,3,89,analytical,mixed,impact,Biomedical Engineer
+0,0,0,1,0,3,2,5,5,3,2,4,4,3,3,86,analytical,mixed,impact,Chemical Engineer
+0,0,0,1,0,4,3,5,5,4,3,3,4,4,3,88,analytical,mixed,growth,Mechanical Engineer
+0,0,0,1,0,4,3,5,5,4,3,3,4,4,3,87,analytical,mixed,impact,Civil Engineer
+0,0,0,1,0,4,3,5,5,3,3,3,4,3,3,85,analytical,mixed,stability,Electrical Engineer
+0,0,0,1,0,3,3,5,5,3,3,4,4,3,3,84,analytical,mixed,growth,Environmental Engineer
+0,0,0,1,0,4,3,5,5,4,3,3,5,4,3,90,analytical,mixed,impact,Biotechnology Researcher
+0,0,0,1,0,3,2,5,5,3,2,3,4,4,3,88,analytical,independent,growth,Pharmaceutical Scientist
+0,0,0,1,0,4,3,5,5,4,3,3,4,4,3,87,analytical,mixed,impact,Materials Scientist
+0,0,0,1,1,4,4,5,5,4,3,3,4,4,4,86,analytical,mixed,creativity,Architect
+0,0,0,1,0,3,2,5,5,3,2,2,4,3,2,85,analytical,independent,growth,Laboratory Technician
+0,0,0,1,0,4,3,5,5,4,3,3,5,4,3,91,analytical,mixed,growth,Geologist
+0,0,0,1,0,4,3,5,5,4,3,3,4,4,3,88,analytical,mixed,impact,Marine Biologist
+0,0,0,1,0,3,3,5,5,3,3,3,4,4,3,87,analytical,mixed,growth,Astronomer
+0,0,0,1,0,4,4,5,5,4,3,3,4,4,4,89,analytical,mixed,growth,Physics Researcher
+0,0,1,1,0,5,3,4,4,5,4,2,4,4,4,84,social,team,impact,Medical Doctor
+0,0,1,1,0,5,4,4,4,5,4,1,3,4,4,86,social,team,impact,Nurse Practitioner
+0,0,1,1,0,4,3,4,4,5,3,1,3,3,3,82,social,team,stability,Physical Therapist
+0,0,1,1,0,5,4,4,4,5,4,1,3,4,4,85,social,team,impact,Clinical Psychologist
+0,0,1,1,0,4,3,4,4,4,3,1,3,4,4,83,social,team,stability,Pharmacist
+0,1,1,0,1,5,5,3,4,4,3,1,2,5,5,81,creative,mixed,creativity,Journalist
+0,1,1,0,1,4,4,3,4,4,3,1,2,5,5,80,creative,mixed,creativity,Public Relations Specialist
+0,0,1,0,1,5,4,3,4,5,4,1,2,5,5,84,social,team,growth,Communications Director
+0,1,0,0,1,4,5,2,3,3,2,1,1,5,4,76,creative,independent,creativity,Photographer
+0,1,0,0,1,4,5,3,4,4,3,2,1,5,4,78,creative,mixed,creativity,Film Director
+0,0,1,0,1,5,4,3,4,4,3,1,2,5,5,82,social,team,creativity,Museum Curator
+0,0,1,0,1,4,4,3,4,4,3,1,2,4,5,81,social,team,creativity,Art Gallery Manager
+0,1,0,0,1,3,5,2,3,3,2,1,1,4,3,73,creative,independent,creativity,Music Producer
+0,1,0,0,1,4,5,2,3,3,2,1,0,4,4,75,creative,independent,creativity,Sound Designer
+0,0,1,0,1,5,4,3,4,5,4,1,2,5,5,83,social,team,creativity,Theater Director
+1,0,1,0,0,4,3,4,4,4,4,3,4,4,4,86,analytical,team,income,Investment Banker
+1,0,1,0,0,4,3,5,5,4,4,3,5,3,3,89,analytical,mixed,income,Actuary
+1,0,1,0,0,4,3,4,5,4,3,3,5,4,4,87,analytical,team,income,Risk Analyst
+1,0,1,0,0,5,3,4,4,5,4,2,4,4,5,85,social,team,growth,Corporate Trainer
+0,0,1,0,0,5,4,3,4,5,5,1,3,5,5,88,social,team,growth,Executive Coach
+0,0,1,0,1,5,4,3,4,5,4,1,2,5,5,84,social,team,impact,Non-Profit Director
+0,0,1,0,0,5,4,4,4,5,5,2,4,4,5,86,social,team,impact,Policy Analyst
+0,0,1,0,1,5,4,3,4,5,4,2,3,5,5,85,social,team,impact,Social Worker
+0,0,1,1,0,4,3,4,4,5,4,2,4,4,4,83,social,team,impact,Nutritionist
+0,0,1,0,1,5,4,3,4,5,4,1,3,5,5,84,social,team,creativity,Teacher
+0,0,1,0,1,5,4,4,4,5,4,2,3,5,5,86,social,team,impact,School Counselor
+1,0,1,0,0,4,3,4,4,4,4,3,4,4,4,85,analytical,team,growth,Business Intelligence Analyst
+1,0,1,0,0,4,3,4,4,5,4,3,4,4,4,84,analytical,team,income,Portfolio Manager
+1,0,1,0,0,4,3,4,5,4,4,3,4,4,4,86,analytical,team,income,Tax Consultant
+1,0,1,0,0,4,3,4,4,4,3,3,4,4,4,83,analytical,team,stability,Auditor

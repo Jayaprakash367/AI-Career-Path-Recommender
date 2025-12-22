@@ -80,9 +80,9 @@ Our AI analyzes:
 
 ### 🔬 **Machine Learning Model**
 
-- 🌲 Decision Tree Classifier with optimized hyperparameters
-- 📚 Trained on 40+ diverse career paths
-- 🎯 High prediction accuracy
+- 🌲 Random Forest Classifier with 100 decision trees
+- 📚 Trained on 145+ diverse career paths
+- 📈 27.6% accuracy (27x better than random)
 - 🔄 Continuous learning capability
 
 ---
@@ -91,66 +91,75 @@ Our AI analyzes:
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                     AI Career Path Recommender               │
+│                AI Career Path Recommender                    │
 └─────────────────────────────────────────────────────────────┘
-                              │
-                ┌─────────────┴──────────────┐
-                │                            │
-         ┌──────▼──────┐             ┌──────▼──────┐
-         │   Frontend   │             │   Backend    │
-         │   (React)    │◄───────────►│   (Flask)    │
-         └──────────────┘   REST API  └──────────────┘
-         │                                    │
-         │  • Vite Build                      │  • ML Model
-         │  • Tailwind CSS                    │  • scikit-learn
-         │  • Framer Motion                   │  • Pandas/NumPy
-         │  • Recharts                        │  • CORS Enabled
-         │  • React Router                    │
-         │                                    │
-         └────────────────────┬───────────────┘
-                              │
-                    ┌─────────▼─────────┐
-                    │   Data Storage    │
-                    │  MongoDB / JSON   │
-                    └───────────────────┘
+                          │
+            ┌─────────────┴──────────────┐
+            │                            │
+      ┌─────▼──────┐             ┌─────▼──────┐
+      │  Frontend   │             │   Backend   │
+      │  (React)    │◄───────────►│   (Flask)   │
+      └─────────────┘  REST API   └─────────────┘
+      │                                  │
+      │  • Vite Build                    │  • ML Model
+      │  • Tailwind CSS                  │  • scikit-learn
+      │  • Framer Motion                 │  • Pandas/NumPy
+      │  • Recharts                      │  • CORS Enabled
+      │  • React Router                  │
+      │                                  │
+      └──────────────────┬───────────────┘
+                         │
+               ┌─────────▼─────────┐
+               │  Data Storage     │
+               │ MongoDB / JSON    │
+               └───────────────────┘
 ```
 
 ### 📁 Project Structure
 
 ```
 career_path/
-├── ai-career-backend/          # Flask REST API + ML Model
-│   ├── app.py                  # Main Flask app with endpoints
+├── ai-career-backend/
+│   ├── app.py                  # Flask REST API
 │   ├── model/
 │   │   ├── train_model.py      # ML training script
-│   │   └── career_model.pkl    # Trained Decision Tree model
+│   │   └── career_model.pkl    # Trained model
 │   ├── data/
-│   │   ├── careers.csv         # Training dataset (40+ samples)
-│   │   └── records.json        # Local storage (if no MongoDB)
-│   ├── requirements.txt        # Python dependencies
-│   ├── Procfile                # Heroku/Render config
+│   │   ├── careers.csv         # Training dataset (145+ samples)
+│   │   └── records.json        # Local storage
+│   ├── requirements.txt
+│   ├── Procfile
 │   └── README.md
 │
-└── ai-career-frontend/         # React + Vite + Tailwind
+└── ai-career-frontend/
     ├── src/
-    │   ├── components/         # Navbar, Hero, Form, ResultCard, Charts, Footer
-    │   ├── pages/              # Home, RecommendationForm, Results
-    │   ├── App.jsx             # Main app router
-    │   ├── main.jsx            # Entry point
-    │   └── index.css           # Tailwind + custom styles
-    ├── package.json            # npm dependencies
-    ├── vite.config.js          # Vite config
-    ├── tailwind.config.js      # Tailwind config
+    │   ├── components/
+    │   │   ├── Navbar.jsx
+    │   │   ├── Hero.jsx
+    │   │   ├── Form.jsx
+    │   │   ├── ResultCard.jsx
+    │   │   ├── Charts.jsx
+    │   │   └── Footer.jsx
+    │   ├── pages/
+    │   │   ├── Home.jsx
+    │   │   ├── RecommendationForm.jsx
+    │   │   └── Results.jsx
+    │   ├── App.jsx
+    │   ├── main.jsx
+    │   └── index.css
+    ├── package.json
+    ├── vite.config.js
+    ├── tailwind.config.js
     └── README.md
 ```
 
 ---
 
-## � Getting Started
+## 🚀 Getting Started
 
 ### Prerequisites
 
-Before you begin, ensure you have the following installed:
+Before you begin, ensure you have:
 
 - **Python 3.11+** - [Download](https://www.python.org/downloads/)
 - **Node.js 18+** - [Download](https://nodejs.org/)
@@ -184,13 +193,13 @@ source .venv/bin/activate
 # Install dependencies
 pip install -r requirements.txt
 
-# The model will be automatically trained on first run
+# Train the model (runs automatically on first startup)
 ```
 
 #### 3️⃣ Setup Frontend
 
 ```bash
-# Open a new terminal and navigate to frontend directory
+# Open a new terminal and navigate to frontend
 cd ai-career-frontend
 
 # Install dependencies
@@ -205,94 +214,93 @@ echo "VITE_API_URL=http://localhost:5000" > .env
 #### 🔧 Start Backend Server
 
 ```bash
-# In the ai-career-backend directory with activated virtual environment
+# In ai-career-backend directory with activated virtual environment
 python app.py
 ```
 
-The backend will start on **http://localhost:5000**
+Backend will run on: **http://localhost:5000**
 
 #### 🎨 Start Frontend Server
 
 ```bash
-# In the ai-career-frontend directory
+# In ai-career-frontend directory
 npm run dev
 ```
 
-The frontend will start on **http://localhost:5173**
+Frontend will run on: **http://localhost:5173**
 
 #### 🌐 Access the Application
 
-Open your browser and navigate to:
+Open your browser and visit:
 ```
 http://localhost:5173
 ```
 
 ---
 
-## � Tech Stack
+## 💻 Tech Stack
 
 ### Frontend
 
 | Technology | Purpose | Version |
 |------------|---------|---------|
-| ![React](https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB) | UI Framework | 18.3.1 |
-| ![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat&logo=vite&logoColor=white) | Build Tool | 5.4.21 |
-| ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white) | Styling | 3.4.17 |
-| ![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=flat&logo=framer&logoColor=white) | Animations | 10.12.16 |
-| ![Recharts](https://img.shields.io/badge/Recharts-22B5BF?style=flat) | Data Visualization | 2.5.0 |
-| ![Axios](https://img.shields.io/badge/Axios-5A29E4?style=flat&logo=axios&logoColor=white) | HTTP Client | 1.7.2 |
+| React | UI Framework | 18.3.1 |
+| Vite | Build Tool | 5.4.21 |
+| Tailwind CSS | Styling | 3.4.17 |
+| Framer Motion | Animations | 10.12.16 |
+| Recharts | Data Visualization | 2.5.0 |
+| Axios | HTTP Client | 1.7.2 |
 
 ### Backend
 
 | Technology | Purpose | Version |
 |------------|---------|---------|
-| ![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white) | Language | 3.11+ |
-| ![Flask](https://img.shields.io/badge/Flask-000000?style=flat&logo=flask&logoColor=white) | Web Framework | 3.1.0 |
-| ![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=flat&logo=scikit-learn&logoColor=white) | ML Library | 1.5.2 |
-| ![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat&logo=pandas&logoColor=white) | Data Processing | 2.2.3 |
-| ![NumPy](https://img.shields.io/badge/NumPy-013243?style=flat&logo=numpy&logoColor=white) | Numerical Computing | 2.1.3 |
-| ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat&logo=mongodb&logoColor=white) | Database (Optional) | 4.10.1 |
+| Python | Language | 3.11+ |
+| Flask | Web Framework | 3.1.0 |
+| scikit-learn | ML Library | 1.5.2 |
+| Pandas | Data Processing | 2.2.3 |
+| NumPy | Numerical Computing | 2.1.3 |
+| MongoDB | Database (Optional) | 4.10.1 |
 
 ---
 
 ## 📊 How It Works
 
-### 1. Data Collection
-Users complete a comprehensive 6-step assessment form:
+### Step-by-Step Process
 
 ```
-Step 1: Basic Information (Name, Age, Education, Current Role)
-   ↓
-Step 2: Interest Areas (5 categories)
-   ↓
-Step 3: Core Skills Rating (6 skills, 1-5 scale)
-   ↓
-Step 4: Technical Skills (4 skills, 0-5 scale)
-   ↓
-Step 5: Academic & Preferences (Marks, Personality, Goals)
-   ↓
-Step 6: Additional Details (Experience, Industry, Location)
+Step 1: Basic Information
+  ├─ Name, Age, Education, Current Role
+  │
+Step 2: Interest Areas
+  ├─ Technology, Design, Business, Science, Arts
+  │
+Step 3: Core Skills Rating
+  ├─ Communication, Creativity, Logic, Problem-solving, Teamwork, Leadership
+  │
+Step 4: Technical Skills
+  ├─ Programming, Data Analysis, Writing, Public Speaking
+  │
+Step 5: Academic & Preferences
+  ├─ Marks, Personality Type, Work Preference, Career Goals
+  │
+Step 6: Submit & Get Recommendations
+  └─ View Top 3 Careers with Confidence Scores
 ```
 
-### 2. Feature Engineering
-The ML model processes 19 key features:
+### Feature Engineering
+
+The ML model processes **19 key features**:
 - Binary interests (5)
 - Skill ratings (10)
 - Academic score (1)
 - Encoded preferences (3)
 
-### 3. Prediction
-Decision Tree Classifier analyzes the feature vector and returns:
-- **Top 3 career matches**
-- **Confidence scores** (0.00 - 1.00)
-- **Detailed career information**
+### Prediction Engine
 
-### 4. Results Display
-Users receive:
-- 📊 Visual confidence charts
-- 🎯 Ranked career recommendations
-- 👤 Personal profile summary
-- 💼 Career details with salary ranges, growth potential, and requirements
+- **Algorithm**: Random Forest Classifier (100 trees)
+- **Accuracy**: 27.6% (27x better than random)
+- **Output**: Top 3 career matches with confidence scores
 
 ---
 
@@ -305,14 +313,10 @@ Users receive:
 
 *Stunning hero section with gradient backgrounds and smooth animations*
 
----
-
 ### 📝 Multi-Step Form
 ![Assessment Form](https://via.placeholder.com/800x500/8b5cf6/ffffff?text=Interactive+6-Step+Assessment)
 
 *Intuitive form with progress tracking and real-time validation*
-
----
 
 ### 📊 Results Dashboard
 ![Results Page](https://via.placeholder.com/800x500/06b6d4/ffffff?text=AI-Powered+Career+Recommendations)
@@ -325,14 +329,27 @@ Users receive:
 
 ## 📡 API Endpoints
 
-### `GET /`
-Health check
-```json
-{"status": "AI Career Path Recommender backend running"}
+### 1. Health Check
+
+```http
+GET /
 ```
 
-### `POST /register`
-Save user information (name, age, education)
+Response:
+```json
+{
+  "status": "AI Career Path Recommender backend running"
+}
+```
+
+### 2. Register User
+
+```http
+POST /register
+Content-Type: application/json
+```
+
+Request:
 ```json
 {
   "name": "John Doe",
@@ -341,10 +358,22 @@ Save user information (name, age, education)
 }
 ```
 
-### `POST /predict`
-Get career recommendations (19 features)
+Response:
 ```json
-// Request
+{
+  "status": "ok"
+}
+```
+
+### 3. Get Career Recommendations
+
+```http
+POST /predict
+Content-Type: application/json
+```
+
+Request (19 features):
+```json
 {
   "interest_tech": 1,
   "interest_design": 0,
@@ -366,19 +395,36 @@ Get career recommendations (19 features)
   "work_preference": "team",
   "career_goal": "growth"
 }
+```
 
-// Response
+Response:
+```json
 {
   "recommendations": [
-    {"career": "Data Scientist", "confidence": 0.92},
-    {"career": "Software Engineer", "confidence": 0.85},
-    {"career": "Machine Learning Engineer", "confidence": 0.78}
+    {
+      "career": "Data Scientist",
+      "confidence": 0.92
+    },
+    {
+      "career": "Software Engineer",
+      "confidence": 0.85
+    },
+    {
+      "career": "Machine Learning Engineer",
+      "confidence": 0.78
+    }
   ]
 }
 ```
 
-### `POST /feedback`
-Submit user feedback
+### 4. Submit Feedback
+
+```http
+POST /feedback
+Content-Type: application/json
+```
+
+Request:
 ```json
 {
   "rating": 5,
@@ -386,112 +432,100 @@ Submit user feedback
 }
 ```
 
+Response:
+```json
+{
+  "status": "ok"
+}
+```
+
+### 5. Get Model Information ⭐
+
+```http
+GET /model-info
+```
+
+Response:
+```json
+{
+  "status": "Model loaded successfully",
+  "model_type": "Random Forest Classifier",
+  "accuracy": {
+    "test_accuracy": 27.59,
+    "cv_mean": 26.19,
+    "cv_std": 3.80,
+    "cv_scores": [28.6, 29.2, 20.8]
+  },
+  "training_info": {
+    "training_samples": 145,
+    "num_careers": 104,
+    "features_used": 19
+  }
+}
+```
+
 ---
 
 ## 🌐 Deployment
 
-### Deploy to Render (Recommended)
+### Deploy Backend to Render
 
-#### Backend
-1. Create new **Web Service** on Render
-2. Connect your GitHub repo
-3. Set build command: `pip install -r requirements.txt && python model/train_model.py`
-4. Set start command: `gunicorn app:app`
-5. Add environment variable: `MONGO_URI` (if using MongoDB)
+1. Create new **Web Service** on [Render](https://render.com)
+2. Connect your GitHub repository
+3. Set build command:
+   ```
+   pip install -r requirements.txt && python model/train_model.py
+   ```
+4. Set start command:
+   ```
+   gunicorn app:app
+   ```
+5. Add environment variable (optional):
+   ```
+   MONGO_URI=your_mongodb_connection_string
+   ```
 
-#### Frontend
-1. Create new **Static Site** on Render
-2. Set build command: `npm install && npm run build`
-3. Set publish directory: `dist`
-4. Add environment variable: `REACT_APP_API_URL=https://your-backend.onrender.com`
+### Deploy Frontend to Vercel/Netlify
+
+1. Build the frontend:
+   ```bash
+   cd ai-career-frontend
+   npm run build
+   ```
+
+2. **For Vercel**:
+   ```bash
+   npm install -g vercel
+   vercel
+   ```
+
+3. **For Netlify**:
+   - Drag and drop the `dist` folder to Netlify
+   - Set environment variable: `VITE_API_URL=https://your-backend.onrender.com`
 
 ### Deploy to Heroku
 
-#### Backend
-```cmd
+```bash
+# Backend
 heroku create your-app-backend
 heroku config:set MONGO_URI=your_mongodb_uri
 git push heroku main
-```
 
-#### Frontend
-```cmd
-cd ai-career-frontend
-npm run build
-# Deploy dist/ folder to Heroku, Netlify, or Vercel
+# Frontend (use Vercel/Netlify instead for better static hosting)
 ```
 
 ---
 
-## 🎨 Customization
-
-### Expand Dataset
-Edit `ai-career-backend/data/careers.csv` to add more training samples:
-```csv
-interest_tech,interest_design,communication,creativity,logic,marks,personality,career_label
-1,0,4,3,5,90,analytical,Machine Learning Engineer
-```
-
-Then retrain:
-```cmd
-python model\train_model.py
-```
-
-### Add New Career Details
-Update the modal content in `src/pages/Results.jsx`:
-```jsx
-const careerDetails = {
-  "Data Scientist": {
-    description: "Analyze data to extract insights...",
-    skills: ["Python", "Statistics", "SQL"],
-    salary: "$100k - $150k"
-  }
-}
-```
-
-### Styling
-Modify `tailwind.config.js` for theme changes:
-```js
-theme: {
-  extend: {
-    colors: {
-      primary: '#6366F1',
-      secondary: '#06B6D4'
-    }
-  }
-}
-```
-
----
-
-## 🧪 Testing
-
-### Backend
-```cmd
-# Test prediction endpoint
-curl -X POST http://localhost:5000/predict \
-  -H "Content-Type: application/json" \
-  -d '{"interest_tech":1,"interest_design":0,"communication":3,"creativity":2,"logic":5,"marks":85,"personality":"analytical"}'
-```
-
-### Frontend
-- Open browser DevTools
-- Check network tab for API calls
-- Verify form submission and results rendering
-
----
-
----
-
-## �️ Roadmap
+## 🗺️ Roadmap
 
 ### ✅ Completed
-- [x] Core ML model implementation
+- [x] Core ML model (Random Forest)
 - [x] 6-step assessment form
-- [x] Beautiful UI with glassmorphism design
+- [x] Beautiful glassmorphism UI
 - [x] Visual analytics with charts
 - [x] MongoDB integration
 - [x] Responsive design
+- [x] Model evaluation metrics
 
 ### 🚧 In Progress
 - [ ] User authentication system
@@ -499,91 +533,77 @@ curl -X POST http://localhost:5000/predict \
 - [ ] Email notifications
 
 ### 🔮 Future Enhancements
-- [ ] **Advanced Features**
-  - [ ] Career path comparison tool
-  - [ ] Industry salary insights
-  - [ ] Job market trends integration
-  - [ ] LinkedIn profile integration
-  - [ ] Resume analysis and suggestions
-  
-- [ ] **ML Improvements**
-  - [ ] Deep learning model (Neural Networks)
-  - [ ] Natural Language Processing for resume analysis
-  - [ ] Collaborative filtering for better recommendations
-  - [ ] Real-time model retraining
 
-- [ ] **User Experience**
-  - [ ] Dark/Light mode toggle
-  - [ ] Multi-language support
-  - [ ] Voice-guided assessment
-  - [ ] Mobile app (React Native)
-  - [ ] Career counselor chat bot
+**Advanced Features**
+- [ ] Career path comparison tool
+- [ ] Industry salary insights dashboard
+- [ ] Real-time job market trends
+- [ ] LinkedIn profile integration
+- [ ] AI resume analysis
 
-- [ ] **Analytics & Insights**
-  - [ ] Admin dashboard
-  - [ ] User analytics and trends
-  - [ ] A/B testing framework
-  - [ ] Feedback collection system
+**ML Improvements**
+- [ ] Deep learning models (Neural Networks)
+- [ ] Natural Language Processing
+- [ ] Collaborative filtering
+- [ ] Continuous model retraining
+
+**User Experience**
+- [ ] Dark/Light mode toggle
+- [ ] Multi-language support
+- [ ] Voice-guided assessment
+- [ ] Mobile app (React Native)
+- [ ] Career counselor AI chatbot
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+Contributions are welcome! Here's how to contribute:
 
-### How to Contribute
+### Steps
 
-1. **Fork the Project**
+1. **Fork the Repository**
    ```bash
    git clone https://github.com/Jayaprakash367/AI-Career-Path-Recommender.git
    ```
 
-2. **Create your Feature Branch**
+2. **Create Feature Branch**
    ```bash
    git checkout -b feature/AmazingFeature
    ```
 
-3. **Commit your Changes**
+3. **Make Changes & Commit**
    ```bash
    git commit -m 'Add some AmazingFeature'
    ```
 
-4. **Push to the Branch**
+4. **Push to Branch**
    ```bash
    git push origin feature/AmazingFeature
    ```
 
-5. **Open a Pull Request**
+5. **Open Pull Request**
 
-### Contribution Guidelines
+### Guidelines
 
-- Follow the existing code style and conventions
+- Follow existing code style
 - Write clear commit messages
 - Add tests for new features
-- Update documentation as needed
-- Be respectful and constructive in discussions
+- Update documentation
+- Be respectful and constructive
 
 ---
 
 ## 📄 License
 
-Distributed under the MIT License. See `LICENSE` file for more information.
+MIT License - See [LICENSE](LICENSE) file for details
 
 ```
-MIT License
-
 Copyright (c) 2025 Jayaprakash K
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+in the Software without restriction...
 ```
 
 ---
@@ -606,24 +626,23 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 
 Special thanks to:
 
-- [React](https://reactjs.org/) - For the amazing UI library
-- [Flask](https://flask.palletsprojects.com/) - For the lightweight web framework
-- [scikit-learn](https://scikit-learn.org/) - For powerful ML tools
-- [Tailwind CSS](https://tailwindcss.com/) - For the utility-first CSS framework
-- [Framer Motion](https://www.framer.com/motion/) - For beautiful animations
-- [Recharts](https://recharts.org/) - For elegant data visualizations
-- All contributors and users of this project
+- [React](https://reactjs.org/) - UI library
+- [Flask](https://flask.palletsprojects.com/) - Web framework
+- [scikit-learn](https://scikit-learn.org/) - ML library
+- [Tailwind CSS](https://tailwindcss.com/) - CSS framework
+- [Framer Motion](https://www.framer.com/motion/) - Animations
+- [Recharts](https://recharts.org/) - Data visualization
 
 ---
 
 ## 📞 Support
 
-If you have any questions or need help, please:
+Need help? Here are your options:
 
-- 📧 Email: jayaprakash.k@example.com
-- 🐛 [Report a Bug](https://github.com/Jayaprakash367/AI-Career-Path-Recommender/issues)
-- 💡 [Request a Feature](https://github.com/Jayaprakash367/AI-Career-Path-Recommender/issues)
-- ⭐ Star this repository if you find it helpful!
+- 📧 **Email**: jayaprakash.k@example.com
+- 🐛 **[Report Bug](https://github.com/Jayaprakash367/AI-Career-Path-Recommender/issues)**
+- 💡 **[Request Feature](https://github.com/Jayaprakash367/AI-Career-Path-Recommender/issues)**
+- ⭐ **Star this repo** if you find it helpful!
 
 ---
 
@@ -638,48 +657,8 @@ Made with ❤️ by [Jayaprakash K](https://github.com/Jayaprakash367)
 **[⬆ Back to Top](#-ai-career-path-recommender)**
 
 </div>
+Run backend
+cd "c:\Users\jayaprakash.k\OneDrive\Documents\career_path\ai-career-backend" && python app.py
 
----
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create feature branch: `git checkout -b feature/amazing-feature`
-3. Commit changes: `git commit -m 'Add amazing feature'`
-4. Push to branch: `git push origin feature/amazing-feature`
-5. Open Pull Request
-
----
-
-## 📝 License
-
-This project is open source and available under the MIT License.
-
----
-
-## 🙋 Support
-
-For issues or questions:
-- Open an issue on GitHub
-- Contact: your-email@example.com
-
----
-
-## 🎓 Future Enhancements
-
-- [ ] Add PDF career report generation
-- [ ] Implement admin dashboard with Flask-Admin
-- [ ] Add career insights from external APIs
-- [ ] Multi-language support
-- [ ] User authentication with JWT
-- [ ] A/B testing for model improvements
-- [ ] Integration with LinkedIn API
-- [ ] Real-time chat support
-
----
-
-**Built with ❤️ by Jayaprakash**
-
-#   A I - C a r e e r - P a t h - R e c o m m e n d e r 
- 
- 
+ Run frontend
+cd "c:\Users\jayaprakash.k\OneDrive\Documents\career_path\ai-career-frontend" && npm run dev

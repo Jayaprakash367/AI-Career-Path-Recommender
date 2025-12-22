@@ -5,8 +5,8 @@ from flask_cors import CORS
 import pandas as pd
 import numpy as np
 import pickle
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.preprocessing import LabelEncoder
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -42,8 +42,29 @@ def train_and_save_model(csv_path, model_path):
     
     X = df[feature_cols]
     y = df['career_label']
-    model = DecisionTreeClassifier(max_depth=10, min_samples_split=2, random_state=42)
-    model.fit(X, y)
+    
+    # Split and train with Random Forest
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    model = RandomForestClassifier(
+        n_estimators=100,
+        max_depth=15,
+        min_samples_split=3,
+        min_samples_leaf=2,
+        random_state=42,
+        n_jobs=-1
+    )
+    model.fit(X_train, y_train)
+    
+    # Calculate metrics
+    from sklearn.metrics import accuracy_score
+    test_accuracy = accuracy_score(y_test, model.predict(X_test))
+    cv_scores = cross_val_score(model, X, y, cv=5, scoring='accuracy')
+    
+    # Feature importance
+    feature_importance = pd.DataFrame({
+        'feature': feature_cols,
+        'importance': model.feature_importances_
+    }).sort_values('importance', ascending=False).to_dict('records')
     
     # Save model and encoders
     with open(model_path, 'wb') as f:
@@ -52,7 +73,14 @@ def train_and_save_model(csv_path, model_path):
             'personality_le': le_person,
             'work_preference_le': le_work,
             'career_goal_le': le_goal,
-            'feature_cols': feature_cols
+            'feature_cols': feature_cols,
+            'test_accuracy': test_accuracy,
+            'cv_scores': cv_scores.tolist(),
+            'cv_mean': cv_scores.mean(),
+            'cv_std': cv_scores.std(),
+            'feature_importance': feature_importance,
+            'training_size': len(df),
+            'num_careers': df['career_label'].nunique()
         }, f)
     return model, le_person, le_work, le_goal, feature_cols
 
@@ -202,6 +230,41 @@ def predict():
 @app.route('/')
 def root():
     return jsonify({'status': 'AI Career Path Recommender backend running'})
+
+@app.route('/model-info', methods=['GET'])
+def model_info():
+    """Return model performance metrics and information"""
+    try:
+        if os.path.exists(MODEL_PATH):
+            with open(MODEL_PATH, 'rb') as f:
+                data = pickle.load(f)
+            
+            # Extract saved metrics
+            info = {
+                'status': 'Model loaded successfully',
+                'model_type': 'Random Forest Classifier',
+                'accuracy': {
+                    'test_accuracy': round(data.get('test_accuracy', 0) * 100, 2),
+                    'cv_mean': round(data.get('cv_mean', 0) * 100, 2),
+                    'cv_std': round(data.get('cv_std', 0) * 100, 2),
+                    'cv_scores': [round(s * 100, 2) for s in data.get('cv_scores', [])]
+                },
+                'training_info': {
+                    'training_samples': data.get('training_size', 0),
+                    'num_careers': data.get('num_careers', 0),
+                    'features_used': len(data.get('feature_cols', []))
+                },
+                'top_features': data.get('feature_importance', [])[:10] if data.get('feature_importance') else [],
+                'confidence_note': 'Higher accuracy means better skill matching quality'
+            }
+            return jsonify(info)
+        else:
+            return jsonify({
+                'status': 'Model not trained yet',
+                'message': 'Please train the model first'
+            }), 404
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)), debug=False)
