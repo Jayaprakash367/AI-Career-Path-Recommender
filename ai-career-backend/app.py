@@ -2,12 +2,22 @@ import os
 import json
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import pandas as pd
-import numpy as np
 import pickle
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.model_selection import train_test_split, cross_val_score
-from sklearn.preprocessing import LabelEncoder
+
+# Try to import ML dependencies, but make them optional
+try:
+    import pandas as pd
+    import numpy as np
+    from sklearn.ensemble import RandomForestClassifier
+    from sklearn.model_selection import train_test_split, cross_val_score
+    from sklearn.preprocessing import LabelEncoder
+    ML_AVAILABLE = True
+except Exception as e:
+    print(f"Warning: ML dependencies not available: {e}")
+    pd = None
+    np = None
+    RandomForestClassifier = None
+    ML_AVAILABLE = False
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 MODEL_PATH = os.path.join(BASE_DIR, 'model', 'career_model.pkl')
@@ -20,6 +30,10 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 
 # Helper: load or train model
 def train_and_save_model(csv_path, model_path):
+    if not ML_AVAILABLE:
+        print("Warning: ML not available, returning mock model")
+        return None, None, None, None, []
+    
     df = pd.read_csv(csv_path)
     df = df.fillna(0)
     
@@ -88,28 +102,55 @@ def train_and_save_model(csv_path, model_path):
 if not os.path.exists(MODEL_PATH):
     print('Model not found, training a new model...')
     os.makedirs(os.path.dirname(MODEL_PATH), exist_ok=True)
-    model, personality_le, work_preference_le, career_goal_le, feature_cols = train_and_save_model(CSV_PATH, MODEL_PATH)
+    if ML_AVAILABLE:
+        model, personality_le, work_preference_le, career_goal_le, feature_cols = train_and_save_model(CSV_PATH, MODEL_PATH)
+    else:
+        model = None
+        personality_le = None
+        work_preference_le = None
+        career_goal_le = None
+        feature_cols = []
 else:
-    with open(MODEL_PATH, 'rb') as f:
-        data = pickle.load(f)
-        model = data['model']
-        personality_le = data.get('personality_le')
-        work_preference_le = data.get('work_preference_le')
-        career_goal_le = data.get('career_goal_le')
-        feature_cols = data.get('feature_cols', [])
+    try:
+        with open(MODEL_PATH, 'rb') as f:
+            data = pickle.load(f)
+            model = data['model']
+            personality_le = data.get('personality_le')
+            work_preference_le = data.get('work_preference_le')
+            career_goal_le = data.get('career_goal_le')
+            feature_cols = data.get('feature_cols', [])
+    except Exception as e:
+        print(f"Warning: Could not load model: {e}")
+        model = None
+        personality_le = None
+        work_preference_le = None
+        career_goal_le = None
+        feature_cols = []
 
 # DB helper: use MongoDB if MONGO_URI is set, else local JSON
-from pymongo import MongoClient
+try:
+    from pymongo import MongoClient
+    MONGO_AVAILABLE = True
+except Exception:
+    MongoClient = None
+    MONGO_AVAILABLE = False
+
 MONGO_URI = os.environ.get('MONGO_URI')
-if MONGO_URI:
-    client = MongoClient(MONGO_URI)
-    db = client.get_default_database()
-    users_col = db.get_collection('users')
-    feedback_col = db.get_collection('feedback')
+if MONGO_AVAILABLE and MONGO_URI:
+    try:
+        client = MongoClient(MONGO_URI)
+        db = client.get_default_database()
+        users_col = db.get_collection('users')
+        feedback_col = db.get_collection('feedback')
+    except Exception as e:
+        print(f"Warning: Could not connect to MongoDB: {e}")
+        users_col = None
+        feedback_col = None
 else:
     users_col = None
     feedback_col = None
     if not os.path.exists(LOCAL_STORE):
+        os.makedirs(os.path.dirname(LOCAL_STORE), exist_ok=True)
         with open(LOCAL_STORE, 'w') as f:
             json.dump({'users': [], 'feedback': []}, f)
 
@@ -147,6 +188,9 @@ def feedback():
 
 @app.route('/predict', methods=['POST'])
 def predict():
+    if not ML_AVAILABLE or model is None:
+        return jsonify({'error': 'ML model not available', 'recommendations': []}), 503
+    
     payload = request.get_json(silent=True) or {}
     try:
         # Extract all features from payload

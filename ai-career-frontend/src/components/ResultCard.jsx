@@ -6,7 +6,7 @@ export default function ResultCard({career, confidence, onLearn, rank}){
     if (rank === 1) return {emoji: '🥇', color: 'bg-yellow-500/20 border-yellow-500', text: 'Best Match'}
     if (rank === 2) return {emoji: '🥈', color: 'bg-gray-400/20 border-gray-400', text: '2nd Match'}
     if (rank === 3) return {emoji: '🥉', color: 'bg-orange-500/20 border-orange-500', text: '3rd Match'}
-    return {emoji: '📌', color: 'bg-indigo-500/20 border-indigo-500', text: `#${rank}`}
+    return {emoji: '📌', color: 'bg-indigo-500/20 border-cyan-500', text: `#${rank}`}
   }
   
   const badge = getRankBadge()
@@ -18,7 +18,7 @@ export default function ResultCard({career, confidence, onLearn, rank}){
       initial={{opacity:0, y:20}}
       animate={{opacity:1, y:0}}
       transition={{duration:0.3, delay: (rank-1) * 0.1}}
-      className="glass p-5 rounded-lg border border-gray-700 hover:border-indigo-500/50 transition-all"
+      className="glass p-5 rounded-lg border border-gray-700 hover:border-cyan-500/50 transition-all"
     >
       <div className="flex items-start justify-between gap-4">
         <div className="flex-1">
@@ -33,14 +33,14 @@ export default function ResultCard({career, confidence, onLearn, rank}){
           <div className="mb-3">
             <div className="flex justify-between text-sm mb-1">
               <span className="text-gray-400">Match Confidence</span>
-              <span className="font-semibold text-indigo-400">{confidencePercent}%</span>
+              <span className="font-semibold text-cyan-400">{confidencePercent}%</span>
             </div>
             <div className="h-2 bg-gray-700 rounded-full overflow-hidden">
               <motion.div 
                 initial={{width: 0}}
                 animate={{width: `${confidencePercent}%`}}
                 transition={{duration: 0.8, delay: (rank-1) * 0.1 + 0.2}}
-                className="h-full bg-gradient-to-r from-indigo-500 to-cyan-500"
+                className="h-full bg-gradient-to-r from-cyan-500 to-cyan-500"
               />
             </div>
           </div>
@@ -49,7 +49,7 @@ export default function ResultCard({career, confidence, onLearn, rank}){
         <div>
           <button 
             onClick={()=>onLearn(career)} 
-            className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 rounded-md text-sm font-medium transition button-glow"
+            className="px-4 py-2 bg-cyan-600 hover:bg-cyan-700 rounded-md text-sm font-medium transition button-glow"
           >
             Details →
           </button>

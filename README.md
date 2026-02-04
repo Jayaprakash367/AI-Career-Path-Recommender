@@ -658,7 +658,7 @@ Made with ❤️ by [Jayaprakash K](https://github.com/Jayaprakash367)
 
 </div>
 Run backend
-cd "c:\Users\jayaprakash.k\OneDrive\Documents\career_path\ai-career-backend" && python app.py
+cd "c:\Users\jayaprakash.k\OneDrive\Documents\movie\AI-Career-Path-Recommender\ai-career-backend" && "C:/Users/jayaprakash.k/OneDrive/Documents/movie/AI-Career-Path-Recommender/.venv/Scripts/python.exe" app.py
 
  Run frontend
-cd "c:\Users\jayaprakash.k\OneDrive\Documents\career_path\ai-career-frontend" && npm run dev
+cd "c:\Users\jayaprakash.k\OneDrive\Documents\movie\AI-Career-Path-Recommender\ai-career-frontend" && npm run dev

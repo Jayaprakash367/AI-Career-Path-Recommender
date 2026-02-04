@@ -1,0 +1,18 @@
+{
+  "name": "AI Career Path Recommender",
+  "short_name": "Career Path AI",
+  "description": "Discover your perfect career path with AI and machine learning",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#6366f1",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

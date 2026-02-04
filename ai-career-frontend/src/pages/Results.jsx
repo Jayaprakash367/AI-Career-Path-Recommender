@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import { useLocation, Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import Navbar from '../components/Navbar'
 import ResultCard from '../components/ResultCard'
 import Charts from '../components/Charts'
@@ -148,21 +149,21 @@ export default function Results(){
           
           {/* Header */}
           <div className="mb-8 text-center">
-            <h1 className="text-4xl font-bold mb-2">🎯 Your Career Recommendations</h1>
-            <p className="text-gray-400">Based on your skills, interests, and preferences</p>
+            <h1 className="text-4xl font-bold mb-2 text-gray-900">🎯 Your Career Recommendations</h1>
+            <p className="text-gray-700">Based on your skills, interests, and preferences</p>
           </div>
 
           {/* User summary */}
           {form && form.name && (
-            <div className="glass p-4 rounded-md mb-6 max-w-3xl mx-auto">
+            <div className="bg-white border-2 border-gray-200 p-4 rounded-md mb-6 max-w-3xl mx-auto">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
                 <div>
-                  <h3 className="text-lg font-semibold">{form.name}</h3>
-                  <p className="text-sm text-gray-300">{form.current_role || '—'} • {form.years_experience || 0} yrs experience</p>
+                  <h3 className="text-lg font-semibold text-gray-900">{form.name}</h3>
+                  <p className="text-sm text-gray-700">{form.current_role || '—'} • {form.years_experience || 0} yrs experience</p>
                 </div>
-                <div className="text-sm text-gray-300">
-                  <div>Preferred Industry: <span className="font-medium text-indigo-300">{form.preferred_industry || 'Any'}</span></div>
-                  <div>Location: <span className="font-medium text-indigo-300">{form.preferred_location || 'Any'}</span></div>
+                <div className="text-sm text-gray-700">
+                  <div>Preferred Industry: <span className="font-medium text-orange-600">{form.preferred_industry || 'Any'}</span></div>
+                  <div>Location: <span className="font-medium text-orange-600">{form.preferred_location || 'Any'}</span></div>
                 </div>
               </div>
             </div>
@@ -172,16 +173,16 @@ export default function Results(){
             
             {/* Recommendations */}
             <div className="lg:col-span-2">
-              <h2 className="text-2xl font-bold mb-4">Top Matches</h2>
+              <h2 className="text-2xl font-bold mb-4 text-gray-900">Top Matches</h2>
               <div className="space-y-4">
                 {result.recommendations?.length > 0 ? (
                   result.recommendations.map((r, idx)=> (
                     <ResultCard key={idx} career={r.career} confidence={r.confidence} onLearn={onLearn} rank={idx + 1} />
                   ))
                 ) : (
-                  <div className="glass p-6 rounded-md text-center">
-                    <p className="text-gray-400">No recommendations found. Please try again.</p>
-                    <Link to="/recommend" className="inline-block mt-4 px-4 py-2 bg-indigo-600 rounded">Go Back</Link>
+                  <div className="bg-white border-2 border-gray-200 p-6 rounded-md text-center">
+                    <p className="text-gray-700">No recommendations found. Please try again.</p>
+                    <Link to="/recommend" className="inline-block mt-4 px-4 py-2 bg-orange-600 text-white rounded hover:bg-orange-700 transition">Go Back</Link>
                   </div>
                 )}
               </div>
@@ -189,29 +190,29 @@ export default function Results(){
 
             {/* Chart & Stats */}
             <div>
-              <h3 className="text-xl font-semibold mb-4">Match Analysis</h3>
+              <h3 className="text-xl font-semibold mb-4 text-gray-900">Match Analysis</h3>
               {result.recommendations?.length > 0 && (
                 <>
                   <Charts data={result.recommendations || []} />
-                  <div className="glass p-4 rounded-md mt-4">
-                    <h4 className="font-semibold mb-3">Quick Stats</h4>
+                  <div className="bg-white border-2 border-gray-200 p-4 rounded-md mt-4">
+                    <h4 className="font-semibold mb-3 text-gray-900">Quick Stats</h4>
                     <div className="space-y-2 text-sm">
                       <div className="flex justify-between">
-                        <span className="text-gray-400">Best Match:</span>
-                        <span className="font-medium text-indigo-400">{result.recommendations[0]?.career}</span>
+                        <span className="text-gray-700">Best Match:</span>
+                        <span className="font-medium text-orange-600">{result.recommendations[0]?.career}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-400">Confidence:</span>
-                        <span className="font-medium text-green-400">{(result.recommendations[0]?.confidence * 100).toFixed(0)}%</span>
+                        <span className="text-gray-700">Confidence:</span>
+                        <span className="font-medium text-green-600">{(result.recommendations[0]?.confidence * 100).toFixed(0)}%</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-400">Total Analyzed:</span>
-                        <span className="font-medium">36 careers</span>
+                        <span className="text-gray-700">Total Analyzed:</span>
+                        <span className="font-medium text-gray-900">36 careers</span>
                       </div>
                     </div>
                   </div>
                   
-                  <Link to="/recommend" className="block w-full mt-4 px-4 py-3 bg-gray-700 hover:bg-gray-600 rounded text-center transition">
+                  <Link to="/recommend" className="block w-full mt-4 px-4 py-3 bg-orange-600 hover:bg-orange-700 text-white rounded text-center transition font-semibold">
                     ← Retake Assessment
                   </Link>
                 </>
@@ -223,60 +224,81 @@ export default function Results(){
 
         {/* Modal */}
         {modal && modalData && (
-          <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 z-50">
-            <div className="bg-gray-900 p-6 rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto border border-gray-700">
-              <div className="flex justify-between items-start mb-4">
-                <h3 className="text-2xl font-bold text-indigo-400">{modal}</h3>
-                <button onClick={()=>setModal(null)} className="text-gray-400 hover:text-white text-2xl">×</button>
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 z-50"
+          >
+            <motion.div 
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              className="bg-gradient-to-b from-gray-800 to-gray-900 p-8 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto border border-gray-700 shadow-2xl"
+            >
+              <div className="flex justify-between items-start mb-6">
+                <div>
+                  <h3 className="text-3xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">{modal}</h3>
+                  <p className="text-gray-600 text-sm mt-1">Career Path Details & Insights</p>
+                </div>
+                <button onClick={()=>setModal(null)} className="text-gray-600 hover:text-gray-900 text-3xl hover:bg-gray-200 p-2 rounded-lg transition">×</button>
               </div>
               
-              <p className="text-gray-300 mb-6">{modalData.description}</p>
+              <p className="text-gray-700 mb-6 leading-relaxed">{modalData.description}</p>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                <div className="glass p-4 rounded">
-                  <h4 className="font-semibold mb-2 text-indigo-300">💰 Salary Range</h4>
-                  <p className="text-gray-300">{modalData.salary}</p>
+                <div className="bg-gradient-to-br from-orange-50 to-orange-100 p-5 rounded-lg border border-orange-300">
+                  <h4 className="font-semibold mb-2 text-orange-700 flex items-center gap-2">💰 Salary Range</h4>
+                  <p className="text-gray-900 text-lg font-semibold">{modalData.salary}</p>
                 </div>
                 
-                <div className="glass p-4 rounded">
-                  <h4 className="font-semibold mb-2 text-green-300">📈 Job Growth</h4>
-                  <p className="text-gray-300">{modalData.growth}</p>
+                <div className="bg-gradient-to-br from-green-50 to-green-100 p-5 rounded-lg border border-green-300">
+                  <h4 className="font-semibold mb-2 text-green-700 flex items-center gap-2">📈 Job Growth</h4>
+                  <p className="text-gray-900 text-lg font-semibold">{modalData.growth}</p>
                 </div>
                 
-                <div className="glass p-4 rounded">
-                  <h4 className="font-semibold mb-2 text-yellow-300">🎓 Education</h4>
-                  <p className="text-gray-300">{modalData.education}</p>
+                <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 p-5 rounded-lg border border-yellow-300">
+                  <h4 className="font-semibold mb-2 text-yellow-700 flex items-center gap-2">🎓 Education</h4>
+                  <p className="text-gray-900">{modalData.education}</p>
                 </div>
                 
-                <div className="glass p-4 rounded">
-                  <h4 className="font-semibold mb-2 text-purple-300">⚖️ Work-Life Balance</h4>
-                  <p className="text-gray-300">{modalData.workLife}</p>
+                <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-5 rounded-lg border border-blue-300">
+                  <h4 className="font-semibold mb-2 text-blue-700 flex items-center gap-2">⚖️ Work-Life Balance</h4>
+                  <p className="text-gray-900">{modalData.workLife}</p>
                 </div>
               </div>
               
-              <div className="glass p-4 rounded">
-                <h4 className="font-semibold mb-3 text-cyan-300">🛠️ Key Skills Required</h4>
+              <div className="bg-gradient-to-r from-orange-50 to-orange-100 p-5 rounded-lg border border-orange-300 mb-6">
+                <h4 className="font-semibold mb-3 text-orange-700 flex items-center gap-2">🛠️ Key Skills Required</h4>
                 <div className="flex flex-wrap gap-2">
                   {modalData.skills.map((skill, i) => (
-                    <span key={i} className="px-3 py-1 bg-indigo-600/30 border border-indigo-500/50 rounded text-sm">
+                    <span key={i} className="px-4 py-2 bg-white border-2 border-orange-300 text-orange-700 rounded-lg text-sm font-medium hover:bg-orange-100 transition">
                       {skill}
                     </span>
                   ))}
                 </div>
               </div>
               
-              <div className="mt-6 flex gap-3">
-                <button onClick={()=>setModal(null)} className="flex-1 px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded transition">
+              <div className="mt-8 flex gap-3">
+                <motion.button 
+                  onClick={()=>setModal(null)} 
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="flex-1 px-4 py-3 bg-gray-300 hover:bg-gray-400 text-gray-900 rounded-lg transition font-semibold"
+                >
                   Close
-                </button>
-                <a href={`https://www.google.com/search?q=${encodeURIComponent(modal + ' career path')}`} 
-                   target="_blank" rel="noopener noreferrer"
-                   className="flex-1 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 rounded text-center transition">
-                  Learn More Online
-                </a>
+                </motion.button>
+                <motion.a 
+                  href={`https://www.google.com/search?q=${encodeURIComponent(modal + ' career path')}`} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="flex-1 px-4 py-3 bg-gradient-to-r from-orange-500 to-orange-600 hover:shadow-lg hover:shadow-orange-500/50 text-white rounded-lg text-center transition font-semibold"
+                >
+                  Learn More Online →
+                </motion.a>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         )}
 
       </main>
@@ -284,3 +306,4 @@ export default function Results(){
     </div>
   )
 }
+
